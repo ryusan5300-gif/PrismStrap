@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrismStrap - 次世代のRobloxブートストラッパー &amp; 最適化ツール</title>
+  <meta name="description" content="Robloxのための次世代ブートストラッパー。FPS上限解除、カスタム死亡サウンド、グラフィック最適化、FastFlagsエディターを美しいWindows 11 Fluent UIで。">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Effect -->
+  <div class="bg-glow"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
+        <img src="assets/icon.png" alt="PrismStrap Logo" class="nav-logo">
+        <span>PrismStrap</span>
+        <span class="version-tag">v0.3.0</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link" data-i18n="navFeatures">機能</a></li>
+        <li><a href="workshop.html" class="nav-link" style="color: #60A5FA; font-weight: 600;" data-i18n="navWorkshop">ワークショップ</a></li>
+        <li><a href="#comparison" class="nav-link" data-i18n="navComparison">比較</a></li>
+        <li><a href="#how-it-works" class="nav-link" data-i18n="navHow">導入方法</a></li>
+        <li><a href="#faq" class="nav-link" data-i18n="navFaq">よくある質問</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="btnLang" class="btn-lang" title="Switch Language">🌐 English</button>
+        <a href="https://drive.google.com/file/d/1yKjHtxr3Esd8iDOfhH24CCEhjtGY1K5l/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-download-sm" data-i18n="navDownload">ダウンロード</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <div class="badge-announcement">
+        <span class="badge-dot"></span>
+        <span data-i18n="badgeAnnouncement">PrismStrap v0.3.0 正式リリース</span>
+      </div>
+
+      <h1 class="hero-title" data-i18n="heroTitle">
+        Roblox を、もっと自由に。<br>
+        <span class="text-gradient">美しく、軽快に。</span>
+      </h1>
+
+      <p class="hero-subtitle" data-i18n="heroSubtitle">
+        次世代の Roblox ブートストラッパー &amp; 最適化ツール。FPS上限解除、カスタム死亡サウンド、グラフィック最適化、FastFlagsエディターを、美しい Windows 11 Fluent UI で。
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://drive.google.com/file/d/1yKjHtxr3Esd8iDOfhH24CCEhjtGY1K5l/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+          <span data-i18n="btnDownloadSetup">Setup.exe をダウンロード</span>
+        </a>
+
+        <a href="https://drive.google.com/file/d/1tc1sxZgAKxJ4MS05pGtAU7nwJS4FbiuO/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="btnDownloadZip">ポータブル版 (ZIP)</span>
+        </a>
+
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span data-i18n="btnGithub">GitHub で見る</span>
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span data-i18n="metaReq">✓ Windows 10 / 11 64bit 対応</span>
+        <span data-i18n="metaNoWebview">✓ WebView2 不要 (100% Native)</span>
+        <span data-i18n="metaSafe">✓ クライアント改造なしで安全</span>
+      </div>
+
+      <!-- Live Player Activity & Download Stats -->
+      <div class="live-stats-bar">
+        <div class="live-stat-card">
+          <div class="live-stat-header">
+            <span class="pulse-indicator pulse-green"></span>
+            <span data-i18n="statOnlinePlayers">Roblox プレイ中</span>
+          </div>
+          <div class="live-stat-value" id="liveOnlineCount">0</div>
+          <div class="live-stat-sub" data-i18n="statOnlineSub">PrismStrap でオンライン</div>
+        </div>
+
+        <div class="live-stat-divider"></div>
+
+        <div class="live-stat-card">
+          <div class="live-stat-header">
+            <span class="pulse-indicator pulse-gray"></span>
+            <span data-i18n="statOfflinePlayers">待機中 (オフライン)</span>
+          </div>
+          <div class="live-stat-value" id="liveOfflineCount">0</div>
+          <div class="live-stat-sub" data-i18n="statOfflineSub">インストール済みユーザー</div>
+        </div>
+
+        <div class="live-stat-divider"></div>
+
+        <div class="live-stat-card">
+          <div class="live-stat-header">
+            <span style="font-size: 0.9rem;">🚀</span>
+            <span data-i18n="statDownloads">総ダウンロード数</span>
+          </div>
+          <div class="live-stat-value" id="liveDownloadCount">0</div>
+          <div class="live-stat-sub" data-i18n="statDownloadSub">累計インストール</div>
+        </div>
+      </div>
+
+      <!-- App Window Mockup -->
+      <div class="app-preview-container">
+        <div class="app-window">
+          <!-- Title Bar -->
+          <div class="window-titlebar">
+            <div class="window-title">
+              <img src="assets/icon.png" width="16" height="16" alt="Icon">
+              <span>PrismStrap - v0.3.0</span>
+            </div>
+            <div class="window-controls">
+              <div class="control-btn"></div>
+              <div class="control-btn"></div>
+              <div class="control-btn"></div>
+            </div>
+          </div>
+
+          <!-- Window Content -->
+          <div class="window-body">
+            <!-- Sidebar -->
+            <div class="mock-sidebar">
+              <div class="sidebar-nav">
+                <div class="nav-item active">🏠 概要</div>
+                <div class="nav-item">⚡ パフォーマンス</div>
+                <div class="nav-item">🎨 グラフィック</div>
+                <div class="nav-item">🔊 サウンド</div>
+                <div class="nav-item">🛠️ FastFlags</div>
+                <div class="nav-item">⚙️ システム統合</div>
+              </div>
+              <div class="sidebar-status">
+                <div class="status-indicator"></div>
+                <span>Roblox: 準備完了</span>
+              </div>
+            </div>
+
+            <!-- Main Panel -->
+            <div class="mock-main">
+              <!-- Banner -->
+              <div class="mock-hero-banner">
+                <div>
+                  <span class="banner-badge" data-i18n="previewReadyBadge">最新バージョン利用可能</span>
+                  <div class="banner-title" data-i18n="previewHeroTitle">最適化設定を適用して起動</div>
+                  <div class="banner-desc" data-i18n="previewHeroDesc">FPS上限解除や指定したグラフィックス設定・死亡サウンドを反映した状態でRobloxを立ち上げます。</div>
+                </div>
+                <button class="mock-btn-launch" data-i18n="previewBtnPlay">▶ 今すぐプレイ</button>
+              </div>
+
+              <!-- 4 Metrics -->
+              <div class="mock-metrics">
+                <div class="metric-card">
+                  <div class="metric-label" data-i18n="previewStatFps">FPS上限</div>
+                  <div class="metric-val">UNLIMITED</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label" data-i18n="previewStatGfx">グラフィックAPI</div>
+                  <div class="metric-val">Direct3D 11</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label" data-i18n="previewStatSound">死亡サウンド</div>
+                  <div class="metric-val">Classic OOF</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label" data-i18n="previewStatProtocol">ブラウザ連携</div>
+                  <div class="metric-val">Active</div>
+                </div>
+              </div>
+
+              <!-- Settings Rows -->
+              <div class="mock-settings-row">
+                <div>
+                  <div class="setting-title">フレームレート上限解除 (FPS Unlocker)</div>
+                  <div class="setting-desc">Roblox標準の60FPS制限を解除し、モニターのリフレッシュレートに連動</div>
+                </div>
+                <span class="mock-badge-active">有効 (無制限)</span>
+              </div>
+
+              <div class="mock-settings-row">
+                <div>
+                  <div class="setting-title">カスタム死亡サウンド (OOF / Vine Boom)</div>
+                  <div class="setting-desc">OGGヘッダーを完全整合化してゲーム内サウンドを自動置換</div>
+                </div>
+                <span class="mock-badge-active">音量 100% | 速度 1.0x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- Workshop Showcase Banner -->
+      <div style="margin-top: 40px; background: linear-gradient(90deg, #131726 0%, #151A2E 100%); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: var(--radius-lg); padding: 24px 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.25);">
+        <div style="display: flex; align-items: center; gap: 16px; text-align: left;">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            🛠️
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span style="font-size: 1.05rem; font-weight: 700; color: #FFFFFF;">PrismStrap ワークショップ公開</span>
+              <span style="font-size: 0.7rem; font-weight: 600; color: #60A5FA; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); padding: 1px 6px; border-radius: 4px;">COMMUNITY</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #94A3B8; margin: 0;">世界中のプレイヤーが共有した FastFlags プリセットをワンクリックであなたの Roblox に直接インポートできます。</p>
+          </div>
+        </div>
+
+        <a href="workshop.html" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">
+          <span>ワークショップを見る</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="secFeaturesTag">FEATURES</span>
+        <h2 class="section-title" data-i18n="secFeaturesTitle">ゲームプレイを別次元へ引き上げる機能群</h2>
+        <p class="section-desc" data-i18n="secFeaturesDesc">必要なすべての最適化を、ひとつの直感的で洗練されたアプリに凝縮。</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- 1. FPS Unlocker -->
+        <div class="bento-card">
+          <div class="card-icon-wrap">⚡</div>
+          <h3 class="card-title" data-i18n="featFpsTitle">FPS 上限解除 (Unlocker)</h3>
+          <p class="card-desc" data-i18n="featFpsDesc">Robloxの標準60FPS制限を完全解除。120/144/240FPSや無制限に対応し、高リフレッシュレートモニターの性能を100%発揮します。</p>
+          <span class="card-tag">DFIntTaskSchedulerTargetFps</span>
+        </div>
+
+        <!-- 2. Custom Death Sounds -->
+        <div class="bento-card">
+          <div class="card-icon-wrap">🔊</div>
+          <h3 class="card-title" data-i18n="featSoundTitle">カスタム死亡時サウンド</h3>
+          <p class="card-desc" data-i18n="featSoundDesc">伝説の元祖「OOF」音、迫力の「Vine Boom」、お好みの「カスタムMP3」を自由に設定。再生音量やピッチ連動速度も自在に調整可能。</p>
+          <span class="card-tag">FMOD OggS Header Sync</span>
+        </div>
+
+        <!-- 3. Graphics & Rendering -->
+        <div class="bento-card">
+          <div class="card-icon-wrap">🎨</div>
+          <h3 class="card-title" data-i18n="featGfxTitle">グラフィック &amp; レンダリング</h3>
+          <p class="card-desc" data-i18n="featGfxDesc">Direct3D 11 や Vulkan をワンクリック選択。高解像度テクスチャの強制適用や不要なポストエフェクトの削減で軽快な描画を実現。</p>
+          <span class="card-tag">Vulkan &amp; Direct3D 11</span>
+        </div>
+
+        <!-- 4. Visual FastFlags -->
+        <div class="bento-card">
+          <div class="card-icon-wrap">🛠️</div>
+          <h3 class="card-title" data-i18n="featFlagsTitle">ビジュアル FastFlags エディター</h3>
+          <p class="card-desc" data-i18n="featFlagsDesc">危険で面倒な JSON 手動編集は不要。安全な GUI からフラグの追加・変更・削除をリアルタイムに行えます。</p>
+          <span class="card-tag">ClientAppSettings.json</span>
+        </div>
+
+        <!-- 5. Launch Splash & Mode Select -->
+        <div class="bento-card">
+          <div class="card-icon-wrap">🚀</div>
+          <h3 class="card-title" data-i18n="featLaunchTitle">洗練されたロードUI &amp; モード選択</h3>
+          <p class="card-desc" data-i18n="featLaunchDesc">ブラウザからの起動時も美しいスプラッシュダイアログを表示。起動時に「Robloxをプレイ」か「設定を開く」かを素早く選べます。</p>
+          <span class="card-tag">roblox-player:// Protocol</span>
+        </div>
+
+        <!-- 6. 100% Native WPF -->
+        <div class="bento-card">
+          <div class="card-icon-wrap">🛡️</div>
+          <h3 class="card-title" data-i18n="featNativeTitle">100% C# .NET 8 WPF ネイティブ</h3>
+          <p class="card-desc" data-i18n="featNativeDesc">HTML/WebView2/ブラウザ依存を一切排除。純粋なネイティブコードでビルドされ、極めて軽量かつ超高速に応答します。</p>
+          <span class="card-tag">No WebView2 Required</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section id="comparison" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="secCompTag">COMPARISON</span>
+        <h2 class="section-title" data-i18n="secCompTitle">標準ランチャーとの違い</h2>
+        <p class="section-desc" data-i18n="secCompDesc">標準のRobloxランチャーでは味わえない、究極のカスタマイズ性と快適性。</p>
+      </div>
+
+      <div class="comparison-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th data-i18n="compColFeature">機能 / 項目</th>
+              <th data-i18n="compColStandard">標準ランチャー</th>
+              <th class="col-highlight" data-i18n="compColPrism">PrismStrap</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="compRow1">FPS 制限解除 (無制限)</td>
+              <td class="cross">✕ (60 FPS 固定)</td>
+              <td class="col-highlight check">✓ (無制限 / 任意FPS)</td>
+            </tr>
+            <tr>
+              <td data-i18n="compRow2">死亡サウンド変更 (OOF/Vine Boom/MP3)</td>
+              <td class="cross">✕</td>
+              <td class="col-highlight check">✓</td>
+            </tr>
+            <tr>
+              <td data-i18n="compRow3">サウンドの音量・再生速度調整</td>
+              <td class="cross">✕</td>
+              <td class="col-highlight check">✓ (0〜300%, 0.5〜2.0x)</td>
+            </tr>
+            <tr>
+              <td data-i18n="compRow4">グラフィック API 選択 (Vulkan/D3D11)</td>
+              <td class="cross">✕</td>
+              <td class="col-highlight check">✓</td>
+            </tr>
+            <tr>
+              <td data-i18n="compRow5">FastFlags ビジュアル編集</td>
+              <td class="cross">✕</td>
+              <td class="col-highlight check">✓</td>
+            </tr>
+            <tr>
+              <td data-i18n="compRow6">ブラウザ連携スプラッシュロードUI</td>
+              <td class="cross">✕</td>
+              <td class="col-highlight check">✓</td>
+            </tr>
+            <tr>
+              <td data-i18n="compRow7">多言語ネイティブUI (6言語)</td>
+              <td class="cross">✕</td>
+              <td class="col-highlight check">✓ (日/英/韓/ID/中/PT)</td>
+            </tr>
+            <tr>
+              <td data-i18n="compRow8">単一スタンドアロン Setup.exe</td>
+              <td class="cross">✕</td>
+              <td class="col-highlight check">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="secStepsTag">HOW IT WORKS</span>
+        <h2 class="section-title" data-i18n="secStepsTitle">導入はわずか3ステップ</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3 class="step-title" data-i18n="step1Title">Setup.exe をダウンロード</h3>
+          <p class="step-desc" data-i18n="step1Desc">ワンクリックでインストールが完了。ショートカットやブラウザ連携も自動で構成されます。</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3 class="step-title" data-i18n="step2Title">好みに合わせて最適化を設定</h3>
+          <p class="step-desc" data-i18n="step2Desc">FPS上限や死亡サウンド、グラフィック設定をお好みに合わせてカスタマイズ。</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3 class="step-title" data-i18n="step3Title">いつも通り Roblox をプレイ</h3>
+          <p class="step-desc" data-i18n="step3Desc">ブラウザやデスクトップからゲームを起動するだけで、すべての最適化が自動適用されます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="secFaqTag">FAQ</span>
+        <h2 class="section-title" data-i18n="secFaqTitle">よくある質問</h2>
+      </div>
+
+      <div class="faq-wrap">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-i18n="faq1Q">PrismStrap を使用してアカウントが BAN される心配はありますか？</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p data-i18n="faq1A">心配ありません。PrismStrap はゲームのメモリ改変やチート行為を一切行いません。Roblox公式が提供している ClientSettings (FastFlags) やオーディオアセットの安全な構成のみを行うため、規約に違反せず安全にご利用いただけます。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-i18n="faq2Q">動作に必要な環境やシステム要件は？</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p data-i18n="faq2A">Windows 10 / 11 (64bit) に対応しています。.NET 8 ランタイム環境で動作し、WebView2 などの重い外部コンポーネントは不要です。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-i18n="faq3Q">アンインストールはどのように行いますか？</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p data-i18n="faq3A">Windows の「設定」>「アプリ」>「インストールされているアプリ」から、通常のアプリと同様にワンクリックで完全にアンインストール可能です。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-i18n="faq4Q">ブラウザからRobloxを起動した時も適用されますか？</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p data-i18n="faq4A">はい！インストーラーで「ブラウザ連携」を有効にしておくことで、RobloxのWebサイト上の「Play」ボタンをクリックした際も PrismStrap が自動起動し、すべての最適化が反映されます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section id="download" class="section">
+    <div class="container">
+      <div class="cta-banner">
+        <h2 class="cta-title" data-i18n="ctaTitle">今すぐ、最高の Roblox 体験を。</h2>
+        <p class="cta-desc" data-i18n="ctaDesc">セットアップは数秒。完全に無料で、広告もありません。</p>
+        
+        <div class="hero-cta">
+          <a href="https://drive.google.com/file/d/1yKjHtxr3Esd8iDOfhH24CCEhjtGY1K5l/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+            <span data-i18n="btnDownloadSetup">Setup.exe をダウンロード</span>
+          </a>
+          <a href="https://drive.google.com/file/d/1tc1sxZgAKxJ4MS05pGtAU7nwJS4FbiuO/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <span data-i18n="btnDownloadZip">ポータブル版 (ZIP)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/icon.png" width="20" height="20" alt="Logo">
+          <span>PrismStrap</span>
+        </div>
+        <div class="footer-links">
+          <a href="#features" class="footer-link" data-i18n="navFeatures">機能</a>
+          <a href="#comparison" class="footer-link" data-i18n="navComparison">比較</a>
+          <a href="#faq" class="footer-link" data-i18n="navFaq">FAQ</a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer" data-i18n="footerDisclaimer">
+        免責事項: PrismStrap は独立したオープンソースプロジェクトであり、Roblox Corporation との提携、承認、関連付けは一切ありません。「Roblox」は Roblox Corporation の登録商標です。
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

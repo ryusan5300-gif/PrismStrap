@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrismStrap ワークショップ - コミュニティ FastFlags</title>
+  <meta name="description" content="世界中のRobloxプレイヤーが共有した最強のFastFlagsプリセット集。ワンクリックであなたのRobloxに直接インポート。">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow -->
+  <div class="bg-glow"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/icon.png" alt="PrismStrap Logo" class="nav-logo">
+          <span>PrismStrap</span>
+          <span class="version-tag" data-i18n="navWorkshop">ワークショップ</span>
+        </a>
+        <a href="index.html" class="nav-link" style="font-size: 0.85rem;" data-i18n="navBack">← トップへ戻る</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Auth Container -->
+        <div id="authContainer">
+          <!-- Populated by workshop.js -->
+        </div>
+
+        <button id="btnOpenPublish" class="btn-publish">
+          <span data-i18n="navPublish">＋ プリセットを投稿</span>
+        </button>
+
+        <button id="btnLang" class="btn-lang" title="Switch Language">🌐 English</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Workshop Hero -->
+  <header class="workshop-hero">
+    <div class="container">
+      <h1 class="hero-title" data-i18n="heroTitle">PrismStrap ワークショップ</h1>
+      <p class="hero-subtitle" data-i18n="heroSubtitle">
+        世界中のプレイヤーが共有した最強の FastFlags プリセット。<br>
+        ワンクリックであなたの Roblox に直接インポートできます。
+      </p>
+
+      <!-- Stats Bar -->
+      <div class="workshop-stats-bar">
+        <div class="workshop-stat-item">
+          <span class="workshop-stat-num" style="display: inline-flex; align-items: center; gap: 6px;">
+            <span class="pulse-indicator pulse-green"></span>
+            <span id="statOnlinePlayers">0</span>
+          </span>
+          <span data-i18n="statOnlinePlayers">Roblox プレイ中</span>
+        </div>
+        <div class="workshop-stat-item">
+          <span class="workshop-stat-num" id="statOfflinePlayers">0</span>
+          <span data-i18n="statOfflinePlayers">待機中 (オフライン)</span>
+        </div>
+        <div class="workshop-stat-item">
+          <span class="workshop-stat-num" id="statGlobalDownloads">0</span>
+          <span data-i18n="statDownloads">総ダウンロード数</span>
+        </div>
+        <div class="workshop-stat-item">
+          <span class="workshop-stat-num" id="statTotalPresets">0</span>
+          <span data-i18n="statPresets">公開プリセット数</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workshop Content -->
+  <main class="container">
+    <!-- Controls & Filters -->
+    <div class="workshop-controls">
+      <div class="controls-top-row">
+        <!-- Search -->
+        <div class="search-box-wrap">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="プリセット名、FastFlag名、作者で検索..." data-i18n="searchPlaceholder">
+        </div>
+
+        <!-- Sort Select -->
+        <div class="controls-actions">
+          <select id="sortSelect" class="sort-select">
+            <option value="popular" data-i18n="sortPopular">人気順</option>
+            <option value="newest" data-i18n="sortNewest">新着順</option>
+            <option value="downloads" data-i18n="sortDownloads">ダウンロード数順</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="category-pills">
+        <button class="category-pill active" data-category="all" data-i18n="catAll">すべて</button>
+        <button class="category-pill" data-category="perf" data-i18n="catPerf">⚡ パフォーマンス</button>
+        <button class="category-pill" data-category="gfx" data-i18n="catGfx">🎨 グラフィック</button>
+        <button class="category-pill" data-category="comp" data-i18n="catComp">🎯 競技・低遅延</button>
+        <button class="category-pill" data-category="retro" data-i18n="catRetro">🕹️ レトロ・UI</button>
+        <button class="category-pill" data-category="ui" data-i18n="catUi">🖥️ ウルトラワイド・画面</button>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div id="workshopGrid" class="workshop-grid">
+      <!-- Dynamically rendered via workshop.js -->
+    </div>
+  </main>
+
+  <!-- Modal: Roblox Anti-Impersonation Auth Wizard -->
+  <div id="authModal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 540px;">
+      <div class="modal-header">
+        <div class="modal-title" data-i18n="authTitle">Roblox アカウント所有権の認証</div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Step Indicator -->
+        <div class="auth-step-indicator">
+          <div class="step-badge active" id="badgeStep1">
+            <span class="step-circle">1</span>
+            <span data-i18n="step1Title">1. アカウント検索</span>
+          </div>
+          <div class="step-divider"></div>
+          <div class="step-badge" id="badgeStep2">
+            <span class="step-circle">2</span>
+            <span data-i18n="step2Title">2. 認証コード設定</span>
+          </div>
+          <div class="step-divider"></div>
+          <div class="step-badge" id="badgeStep3">
+            <span class="step-circle">3</span>
+            <span data-i18n="step3Title">3. 認証完了</span>
+          </div>
+        </div>
+
+        <!-- STEP 1: Search Account -->
+        <div id="authStep1">
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 14px;" data-i18n="authFindPrompt">
+            あなたの Roblox ユーザー名またはIDを入力してください（なりすまし防止のため自己紹介での所有権確認を行います）:
+          </p>
+
+          <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+            <input type="text" id="authSearchInput" class="form-control" placeholder="ユーザー名 または ID (例: Builderman, 156)" style="flex: 1;">
+            <button type="button" id="btnAuthSearch" class="btn-publish" style="white-space: nowrap;" data-i18n="authBtnSearch">検索</button>
+          </div>
+
+          <!-- User Preview Card -->
+          <div id="authStep1Preview" class="auth-user-preview" style="display: none;">
+            <img id="authPreviewAvatar" class="preview-avatar" src="" alt="Avatar">
+            <div class="preview-names">
+              <span id="authPreviewDisplayName" class="preview-displayname"></span>
+              <span id="authPreviewUsername" class="preview-username"></span>
+            </div>
+            <button type="button" id="btnAuthToStep2" class="btn-publish" style="margin-left: auto; padding: 8px 14px;" data-i18n="authBtnProceed">
+              進める →
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: One-Time Code in Bio -->
+        <div id="authStep2" style="display: none;">
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;" data-i18n="authCodePrompt">
+            以下のワンタイム認証コードをコピーし、Robloxプロフィールの「自己紹介 (About / Bio)」に一時的に貼り付けて保存してください。
+          </p>
+
+          <div class="verify-code-box">
+            <div id="verifyCodeDisplay" class="verify-code-text">prism-verify-xxxx</div>
+            <button type="button" id="btnCopyVerifyCode" class="btn-view-details" style="margin-top: 10px;" data-i18n="btnCopyCode">
+              📋 認証コードをコピー
+            </button>
+          </div>
+
+          <div class="verify-guide-box">
+            <div><strong>手順:</strong></div>
+            <ol>
+              <li>上のコードをコピーする</li>
+              <li><a id="authRobloxProfileLink" href="https://www.roblox.com" target="_blank" rel="noopener noreferrer" data-i18n="authProfileLinkText">Roblox のプロフィール設定を開く ↗</a></li>
+              <li>「自己紹介 (About)」欄にコードを貼り付けて保存</li>
+              <li>下の「自己紹介のコードを確認して認証する」をクリック</li>
+            </ol>
+          </div>
+
+          <button type="button" id="btnDoVerify" class="btn-publish" style="width: 100%; justify-content: center; padding: 12px 0;" data-i18n="authBtnVerify">
+            自己紹介のコードを確認して認証する
+          </button>
+        </div>
+
+        <!-- STEP 3: Complete -->
+        <div id="authStep3" style="display: none;">
+          <div class="verify-success-box">
+            <div class="verify-success-icon">✓</div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: #FFFFFF; margin-bottom: 8px;" data-i18n="authSuccessTitle">所有権の認証に成功しました！</h3>
+            <p id="authSuccessUserDesc" style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
+              アカウントの所有権が確認されました。Roblox プロフィールの自己紹介コードは削除して元に戻して構いません。
+            </p>
+            <button type="button" id="btnAuthFinish" class="btn-publish" style="padding: 12px 28px;" data-i18n="authBtnFinish">
+              連携を完了してワークショップに戻る
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Publish FastFlags -->
+  <div id="publishModal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <div class="modal-title" data-i18n="pubTitle">新しい FastFlags を公開</div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form id="publishForm">
+        <div class="modal-body">
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 18px;" data-i18n="pubDesc">
+            自作の最適化設定をコミュニティに共有しましょう。
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="pubNameLabel">プリセット名</label>
+            <input type="text" id="pubTitleInput" class="form-control" placeholder="例: 超低遅延 PvP 特化設定" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="pubCatLabel">カテゴリー</label>
+            <select id="pubCatSelect" class="form-control">
+              <option value="perf">⚡ パフォーマンス</option>
+              <option value="gfx">🎨 グラフィック</option>
+              <option value="comp">🎯 競技・低遅延</option>
+              <option value="retro">🕹️ レトロ・UI</option>
+              <option value="ui">🖥️ ウルトラワイド・画面</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="pubDescLabel">説明文</label>
+            <input type="text" id="pubDescInput" class="form-control" placeholder="この設定の効果やおすすめのプレイスタイルを記述..." required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="pubFlagsLabel">FastFlags (JSON)</label>
+            <textarea id="pubFlagsInput" class="form-control form-textarea" rows="6" placeholder='{&#10;  "DFIntTaskSchedulerTargetFps": 0,&#10;  "FFlagDisablePostFx": true&#10;}' required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-publish" style="width: 100%; justify-content: center;" data-i18n="btnSubmit">ワークショップに公開</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Details & JSON View -->
+  <div id="detailModal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 620px;">
+      <div class="modal-header">
+        <div class="modal-title" data-i18n="detailTitle">プリセット詳細 &amp; FastFlags</div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h3 id="detailTitle" style="font-size: 1.25rem; font-weight: 700; color: #FFFFFF; margin-bottom: 6px;"></h3>
+        <p id="detailDesc" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;"></p>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border-subtle);">
+          <img id="detailAvatar" src="" class="author-avatar" alt="Avatar">
+          <span id="detailAuthor" class="author-name"></span>
+          <span class="author-verified">✓ Verified Creator</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">FastFlags 設定内容</label>
+          <pre id="detailJson" style="background: #0D0E14; border: 1px solid var(--border-subtle); padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #93C5FD; max-height: 220px; overflow-y: auto;"></pre>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnDetailDelete" class="btn-delete-preset" style="margin-right: auto; display: none;">🗑️ 削除</button>
+        <button id="btnDetailCopy" class="btn-view-details" data-i18n="btnCopyJson">JSON をコピー</button>
+        <button id="btnDetailImport" class="btn-publish" data-i18n="btnImportDirect">PrismStrap にワンクリック追加</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notification">
+    <span style="color: #38BDF8; font-size: 1.1rem;">✓</span>
+    <span class="toast-msg"></span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/icon.png" width="20" height="20" alt="Logo">
+          <span>PrismStrap Workshop</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html" class="footer-link">トップ</a>
+          <a href="index.html#features" class="footer-link">機能</a>
+          <a href="index.html#faq" class="footer-link">FAQ</a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        免責事項: PrismStrap は独立したオープンソースプロジェクトであり、Roblox Corporation との提携、承認、関連付けは一切ありません。「Roblox」は Roblox Corporation の登録商標です。
+      </div>
+    </div>
+  </footer>
+
+  <script src="workshop.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+# Visual Studio / .NET Build Artifacts
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+publish/
+publish-single/
+publish-setup/
+Installer/bin/
+Installer/obj/
+Installer/publish/
+
+# Executables, Installers & Large Archives
+*.exe
+*.zip
+*.7z
+*.rar
+*.mp4
+*.dll
+/classic_oof.ogg
+/vine_boom.mp3
+
+# Rust legacy archive
+archive-rust/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+.vscode/
+.idea/
+
+# Logs & temp files
+*.log
+err.txt
+out.txt
+
+# Python
+__pycache__/
+*.pyc
+
+# Vercel
+website/.vercel/
+website/node_modules/
+
+# OS generated files
+.DS_Store
+Thumbs.db
